@@ -499,19 +499,101 @@
       border-top: 1px solid #e0e0e0;
     }
 
+    /* --- Mobile Navigation Menu --- */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background-color: rgba(37, 33, 98, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      transition: right 0.3s ease;
+      padding-top: 80px;
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mobile-nav li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav a {
+      display: block;
+      color: white;
+      padding: 20px 30px;
+      font-size: 18px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background-color: rgba(255, 153, 51, 0.2);
+      color: #FF9933;
+    }
+
+    .mobile-nav .join-button {
+      margin: 20px 30px;
+      text-align: center;
+      padding: 15px 25px;
+      background-color: #FF9933;
+      border-radius: 5px;
+    }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1500;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
     /* --- Responsive Design --- */
     @media (max-width: 992px) {
       .header-container {
-        padding: 10px 15px;
+        padding: 8px 15px;
+      }
+
+      .header-content {
+        flex-wrap: nowrap;
+      }
+
+      .logo {
+        flex-shrink: 1;
+        min-width: 0;
       }
 
       .logo img {
-        height: 40px;
-        margin-right: 8px;
+        height: 35px;
+        margin-right: 6px;
+        flex-shrink: 0;
       }
 
       .logo a {
-        font-size: 22px;
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .main-nav {
@@ -524,6 +606,8 @@
         cursor: pointer;
         color: white;
         flex-shrink: 0;
+        padding: 5px;
+        margin-left: 10px;
       }
 
       .header-container.scrolled .mobile-nav-toggle {
@@ -531,19 +615,18 @@
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .header-container {
-        padding: 8px 10px;
+        padding: 6px 12px;
       }
 
       .logo img {
-        height: 35px;
-        margin-right: 6px;
+        height: 32px;
+        margin-right: 5px;
       }
 
       .logo a {
         font-size: 18px;
-        white-space: nowrap;
       }
 
       .mobile-nav-toggle {
@@ -551,23 +634,83 @@
       }
 
       .hero-content h1 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
       }
 
       .hero-content p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .content-section {
-        padding: 60px 20px;
+        padding: 50px 15px;
       }
 
       .section-title h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
 
       .approach-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-container {
+        padding: 5px 10px;
+      }
+
+      .logo img {
+        height: 28px;
+        margin-right: 4px;
+      }
+
+      .logo a {
+        font-size: 16px;
+      }
+
+      .mobile-nav-toggle {
+        font-size: 20px;
+      }
+
+      .mobile-nav {
+        width: 100%;
+        right: -100%;
+      }
+
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .content-section {
+        padding: 40px 10px;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .header-container {
+        padding: 4px 8px;
+      }
+
+      .logo img {
+        height: 25px;
+        margin-right: 3px;
+      }
+
+      .logo a {
+        font-size: 14px;
+      }
+
+      .mobile-nav-toggle {
+        font-size: 18px;
       }
     }
 
@@ -601,10 +744,23 @@
           <li><a href="#" class="join-button">Join Us</a></li>
         </ul>
       </nav>
-      <div class="mobile-nav-toggle">
+      <div class="mobile-nav-toggle" id="mobileNavToggle">
         <i class="fa fa-bars"></i>
       </div>
     </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">Who We Are</a></li>
+        <li><a href="#approach">Our Approach</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" class="join-button">Join Us</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -952,6 +1108,37 @@
           $('#header').addClass('scrolled');
         } else {
           $('#header').removeClass('scrolled');
+        }
+      });
+
+      // Mobile Navigation
+      $('#mobileNavToggle').click(function () {
+        $('#mobileNav').toggleClass('active');
+        $('#mobileNavOverlay').toggleClass('active');
+        $(this).find('i').toggleClass('fa-bars fa-times');
+      });
+
+      $('#mobileNavOverlay').click(function () {
+        $('#mobileNav').removeClass('active');
+        $('#mobileNavOverlay').removeClass('active');
+        $('#mobileNavToggle').find('i').removeClass('fa-times').addClass('fa-bars');
+      });
+
+      // Close mobile nav when clicking on a link
+      $('.mobile-nav a').click(function () {
+        $('#mobileNav').removeClass('active');
+        $('#mobileNavOverlay').removeClass('active');
+        $('#mobileNavToggle').find('i').removeClass('fa-times').addClass('fa-bars');
+      });
+
+      // Smooth scrolling for anchor links
+      $('a[href^="#"]').click(function (e) {
+        e.preventDefault();
+        var target = $($(this).attr('href'));
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top - 80
+          }, 600);
         }
       });
     });
