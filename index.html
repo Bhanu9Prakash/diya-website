@@ -502,7 +502,16 @@
     /* --- Responsive Design --- */
     @media (max-width: 992px) {
       .header-container {
-        padding: 10px 20px;
+        padding: 10px 15px;
+      }
+
+      .logo img {
+        height: 40px;
+        margin-right: 8px;
+      }
+
+      .logo a {
+        font-size: 22px;
       }
 
       .main-nav {
@@ -511,13 +520,34 @@
 
       .mobile-nav-toggle {
         display: block;
-        font-size: 28px;
+        font-size: 24px;
         cursor: pointer;
         color: white;
+        flex-shrink: 0;
       }
 
       .header-container.scrolled .mobile-nav-toggle {
         color: #252162;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-container {
+        padding: 8px 10px;
+      }
+
+      .logo img {
+        height: 35px;
+        margin-right: 6px;
+      }
+
+      .logo a {
+        font-size: 18px;
+        white-space: nowrap;
+      }
+
+      .mobile-nav-toggle {
+        font-size: 22px;
       }
 
       .hero-content h1 {
