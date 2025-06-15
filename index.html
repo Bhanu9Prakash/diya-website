@@ -1,16 +1,932 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js ">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+<head id="Head1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIYA - Dexterity for India Youth Alliance</title>
+  <meta name="Keywords"
+    content="DIYA, Dexterity for India Youth Alliance, youth leadership, nation building, Swami Vivekananda, BITS Pilani, student organization, social impact, servant leadership" />
+  <meta name="Description"
+    content="DIYA is a community of passionate BITSians building a resurgent India by excelling in entrepreneurship, research, and civic action to solve humanity's most complex problems." />
+
+  <!-- This section combines styles and scripts, similar to the Sewa example -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
+
+  <style>
+    /* General Body and Font Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+    body,
+    td,
+    span,
+    p,
+    a,
+    div,
+    li,
+    em,
+    strong,
+    button,
+    i {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      text-decoration: none;
+      color: #252162;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #FF9933;
+    }
+
+    /* --- Main Header & Navigation --- */
+    .header-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color 0.4s ease;
+      padding: 10px 50px;
+      background-color: transparent;
+    }
+
+    .header-container.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo a {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-container.scrolled .logo a {
+      color: #252162;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-nav li {
+      margin-left: 30px;
+    }
+
+    .main-nav a {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .header-container.scrolled .main-nav a {
+      color: #252162;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: #FF9933;
+      border-bottom-color: #FF9933;
+    }
+
+    .header-container.scrolled .main-nav a:hover,
+    .header-container.scrolled .main-nav a.active {
+      color: #FF9933;
+    }
+
+    .join-button {
+      background-color: #FF9933;
+      color: white !important;
+      padding: 10px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      border: none !important;
+    }
+
+    .join-button:hover {
+      background-color: #e68a2e;
+      color: white !important;
+      border: none !important;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+    }
+
+    /* --- Hero Section --- */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 5rem;
+      margin-bottom: 0.2em;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    /* --- General Section Styling --- */
+    .content-section {
+      padding: 80px 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.8rem;
+      color: #252162;
+      margin-bottom: 10px;
+    }
+
+    .hr-1 {
+      margin: 0 auto;
+      border: 0;
+      height: 4px;
+      width: 100px;
+      background-image: linear-gradient(to right, rgba(255, 153, 51, 0), rgba(255, 153, 51, 0.8), rgba(255, 153, 51, 0));
+    }
+
+    /* --- Initiatives Section (Carousel) --- */
+    .initiatives-carousel .slick-slide {
+      padding: 0 15px;
+    }
+
+    .initiative-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .initiative-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .initiative-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .initiative-card-content {
+      padding: 25px;
+    }
+
+    .initiative-card-content h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+      color: #252162;
+      margin-top: 0;
+    }
+
+    .initiative-card-content p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+      min-height: 100px;
+    }
+
+    .initiative-card-content .card-button {
+      display: inline-block;
+      background: #FF9933;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+
+    .slick-dots li button:before {
+      font-size: 12px;
+      color: #FF9933;
+    }
+
+    .slick-dots li.slick-active button:before {
+      color: #FF9933;
+    }
+
+    /* --- Our Approach Section (3 H's) --- */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .approach-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .approach-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .approach-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .approach-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(37, 33, 98, 0.9) 0%, rgba(37, 33, 98, 0) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      color: white;
+      opacity: 1;
+      transition: background 0.4s;
+    }
+
+    .approach-card:hover .approach-overlay {
+      background: linear-gradient(to top, rgba(255, 153, 51, 0.9) 0%, rgba(37, 33, 98, 0.3) 70%);
+    }
+
+    .approach-overlay h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      margin: 0 0 10px 0;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.4s, opacity 0.4s;
+    }
+
+    .approach-overlay p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.4s 0.1s, opacity 0.4s 0.1s;
+    }
+
+    .approach-card:hover .approach-overlay h3,
+    .approach-card:hover .approach-overlay p {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .approach-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+
+    /* --- Imperative Section --- */
+    .imperative-section {
+      background-color: #252162;
+      background-image: url('https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+    }
+
+    .imperative-section h2 {
+      color: white;
+    }
+
+    .imperative-section .hr-1 {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    }
+
+    .imperative-content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 40px auto 0 auto;
+      font-weight: 300;
+    }
+
+    /* --- Testimonials Section --- */
+    .testimonial-card {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .testimonial-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px auto;
+      border: 5px solid #eef;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 20px auto;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #252162;
+    }
+
+    .testimonial-role {
+      color: #777;
+    }
+
+    /* --- Partners Section --- */
+    .partners-carousel .slick-slide {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+    }
+
+    .partners-carousel img {
+      max-height: 80px;
+      width: auto;
+      max-width: 150px;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .partners-carousel img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      background-color: #f8f9fa;
+      color: #555;
+      padding-top: 60px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Merriweather', serif;
+      color: #252162;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p,
+    .footer-column li {
+      line-height: 1.8;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li a {
+      color: #555;
+    }
+
+    .footer-socials a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 1.5rem;
+      color: #252162;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    /* --- Responsive Design --- */
+    @media (max-width: 992px) {
+      .header-container {
+        padding: 10px 20px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        color: white;
+      }
+
+      .header-container.scrolled .mobile-nav-toggle {
+        color: #252162;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+
+      .content-section {
+        padding: 60px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+
+      .approach-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+
+  <!-- Header -->
+  <header class="header-container" id="header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="#">
+          <!-- Placeholder Logo: Replace with your DIYA logo -->
+          <img src="logo.png" alt="DIYA Logo">
+          <span>DIYA</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">Who We Are</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#" class="join-button">Join Us</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-nav-toggle">
+        <i class="fa fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <!-- Placeholder Video: Replace with your video file -->
+    <video class="hero-video" autoplay loop muted
+      poster="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+      <source src="https://videos.pexels.com/video-files/853878/853878-hd.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Dexterity for India Youth Alliance</h1>
+      <p>Achieving human excellence to serve the nation and humanity at large</p>
+    </div>
+  </section>
+
+  <!-- Main Content Wrapper -->
+  <main>
+
+    <!-- About Section -->
+    <section class="content-section" id="about">
+      <div class="section-title">
+        <h2>Who We Are</h2>
+        <hr class="hr-1">
+      </div>
+      <p style="text-align:center; max-width: 900px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+        Dexterity for India Youth Alliance is a collective of passionate young individuals determined to work
+        incessantly for a resurgent India. Inspired by the teachings of Swami Vivekananda, we aim to build capacity
+        among young leaders who will solve the complex problems of humanity by achieving excellence in their own lives,
+        thereby doing good to themselves and the world at large. Our core belief is that **only a lit DIYA can light
+        others.**
+      </p>
+    </section>
+
+    <!-- Our Initiatives Section -->
+    <section class="content-section" style="background-color: #f8f9fa;" id="activities">
+      <div class="section-title">
+        <h2>Our Initiatives</h2>
+        <hr class="hr-1">
+      </div>
+      <div class="initiatives-carousel">
+        <div>
+          <div class="initiative-card">
+            <!-- Placeholder Image -->
+            <img
+              src="https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Swadesh Yatra">
+            <div class="initiative-card-content">
+              <h3>Swadesh Yatra</h3>
+              <p>An immersive journey across the nation to understand grassroots realities, connect with diverse
+                communities, and discover the soul of India.</p>
+              <a href="#" class="card-button">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="initiative-card">
+            <!-- Placeholder Image -->
+            <img
+              src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Vivekananda Study Circle">
+            <div class="initiative-card-content">
+              <h3>Vivekananda Study Circle</h3>
+              <p>A forum for deep reading and discussion on the life-giving philosophy of Swami Vivekananda, translating
+                his ideals into modern-day action.</p>
+              <a href="#" class="card-button">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="initiative-card">
+            <!-- Placeholder Image -->
+            <img
+              src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Yuvaan">
+            <div class="initiative-card-content">
+              <h3>Yuvaan</h3>
+              <p>Our annual flagship event on National Youth Day, featuring inspirational speakers and workshops to
+                ignite the spirit of nation-building among youth.</p>
+              <a href="#" class="card-button">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="initiative-card">
+            <!-- Placeholder Image -->
+            <img
+              src="https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Manthan">
+            <div class="initiative-card-content">
+              <h3>Manthan</h3>
+              <p>A platform for churning ideas, where we discuss the visions of great Indian leaders and deliberate on
+                issues of national importance.</p>
+              <a href="#" class="card-button">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="content-section" id="approach">
+      <div class="section-title">
+        <h2>Our Approach: The 3 'H's</h2>
+        <hr class="hr-1">
+      </div>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <!-- Placeholder Image -->
+          <img
+            src="https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Heart to Feel">
+          <div class="approach-overlay">
+            <i class="fa fa-heart approach-icon"></i>
+            <h3>Heart to Feel</h3>
+            <p>We believe true service begins with empathy. We encourage youth to feel for the poor, the downtrodden,
+              and the marginalized until their head reels and their heart stops.</p>
+          </div>
+        </div>
+        <div class="approach-card">
+          <!-- Placeholder Image -->
+          <img
+            src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Head to Think">
+          <div class="approach-overlay">
+            <i class="fa fa-lightbulb-o approach-icon"></i>
+            <h3>Head to Think</h3>
+            <p>Emotion must be guided by intellect. We foster critical thinking and strategic planning to find workable,
+              well-thought-out solutions for India's complex challenges.</p>
+          </div>
+        </div>
+        <div class="approach-card">
+          <!-- Placeholder Image -->
+          <img
+            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Hands to Work">
+          <div class="approach-overlay">
+            <i class="fa fa-cogs approach-icon"></i>
+            <h3>Hands to Work</h3>
+            <p>Ideas are meaningless without execution. We empower youth to convert their emotions and strategies into
+              pragmatic action and dedicated work on the ground.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Imperative Section -->
+    <section class="content-section imperative-section">
+      <div class="section-title">
+        <h2>Our Imperative: Why Now?</h2>
+        <hr class="hr-1">
+      </div>
+      <div class="imperative-content">
+        <p>
+          With over 50% of its population under 30, India stands at a unique demographic turning point. This is our
+          'Amrit Kaal'—a golden period leading up to our 100th year of independence in 2047. It is a vow we must
+          fulfill. We must harness this immense youth potential to realize Swami Vivekananda's prophecy: **"India will
+          someday rise to great heights of prosperity and power far more than she had done in the past."** The time for
+          action is now.
+        </p>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="content-section">
+      <div class="section-title">
+        <h2>Voices of DIYA</h2>
+        <hr class="hr-1">
+      </div>
+      <div class="testimonials-carousel">
+        <div>
+          <div class="testimonial-card">
+            <!-- Placeholder Image -->
+            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=2574" class="testimonial-img"
+              alt="Founder">
+            <p class="testimonial-text">"We started DIYA not just to do social work, but to create a generation of
+              leaders who see nation-building as their life's primary purpose. Every BITSian has the potential to be a
+              trailblazer."</p>
+            <p class="testimonial-author">A. Sharma</p>
+            <p class="testimonial-role">Founding Member</p>
+          </div>
+        </div>
+        <div>
+          <div class="testimonial-card">
+            <!-- Placeholder Image -->
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561" class="testimonial-img"
+              alt="Volunteer">
+            <p class="testimonial-text">"Joining DIYA has been transformative. It's more than a club; it's a mindset. It
+              has taught me that leadership isn't a position, but a responsibility you take for the people around you."
+            </p>
+            <p class="testimonial-author">Priya Singh</p>
+            <p class="testimonial-role">Second Year Volunteer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="content-section" style="background-color: #f8f9fa;">
+      <div class="section-title">
+        <h2>Our Supporters</h2>
+        <hr class="hr-1">
+      </div>
+      <div class="partners-carousel">
+        <div><a href="#"><img
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png"
+              alt="BITS Pilani"></a></div>
+        <div><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/NSS-symbol.jpeg" alt="NSS"></a>
+        </div>
+        <div><a href="#"><img src="https://nirmaan.org/wp-content/uploads/2022/03/nirmaan_logo.png" alt="Nirmaan"></a>
+        </div>
+        <div><a href="#"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhwhmrD7tMsN_jLRLCvg4FJOXB0bcD5myhag&s"
+              alt="Enactus"></a></div>
+        <div><a href="#"><img src="https://atmanirbhar.org/wp-content/uploads/2023/11/logo1.png" alt="PARC"></a></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>DIYA</h4>
+        <p>Dexterity for India Youth Alliance<br>
+          BITS Pilani, Pilani Campus<br>
+          Pilani, Rajasthan - 333031<br>
+          India
+        </p>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#activities">Our Activities</a></li>
+          <li><a href="#">Join the Movement</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Become a Member</a></li>
+          <li><a href="#">Partner with Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <p>Stay updated with our activities and join the conversation.</p>
+        <div class="footer-socials">
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-instagram"></a>
+          <a href="#" class="fa fa-linkedin"></a>
+          <a href="#" class="fa fa-youtube"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Dexterity for India Youth Alliance (DIYA). All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      // Slick Carousel for Initiatives
+      $('.initiatives-carousel').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+
+      // Slick Carousel for Testimonials
+      $('.testimonials-carousel').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        arrows: false
+      });
+
+      // Slick Carousel for Partners
+      $('.partners-carousel').slick({
+        dots: false,
+        infinite: true,
+        speed: 800,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2
+            }
+          }
+        ]
+      });
+
+      // Sticky Header
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+          $('#header').addClass('scrolled');
+        } else {
+          $('#header').removeClass('scrolled');
+        }
+      });
+    });
+  </script>
+
 </body>
 
 </html>
